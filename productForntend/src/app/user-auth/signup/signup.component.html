@@ -1,0 +1,37 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3 class="text-center">Register Here!!</h3>
+                <form [formGroup]="user" (ngSubmit)="registerUser()">
+                    <span class="req-filed" *ngIf="email && email.touched && email.invalid">Email is required</span>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Email*</mat-label>
+                        <input type="email" formControlName="email" matInput placeholder="Enter Email">
+                    </mat-form-field>
+
+                    <span class="req-filed" *ngIf="firstName && firstName.touched && firstName.invalid">First Name is required</span>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>First Name*</mat-label>
+                        <input matInput formControlName="firstName" placeholder="Enter First Name">
+                    </mat-form-field>
+                    
+                    <span class="req-filed" *ngIf="lastName && lastName.touched && lastName.invalid">Last Name is required</span>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Last Name*</mat-label>
+                        <input matInput formControlName="lastName" placeholder="Enter Last Name">
+                    </mat-form-field>
+                    <span class="req-filed" *ngIf="password && password.touched && password.invalid">Password is required</span>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Password*</mat-label>
+                        <input type="password" formControlName="password" matInput placeholder="Enter Password">
+                    </mat-form-field>
+                    <div class="container">
+                        <button [disabled]="user.invalid"   mat-raised-button color="primary">Submit</button>
+                        <button type="reset" class="button" mat-raised-button color="primary">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

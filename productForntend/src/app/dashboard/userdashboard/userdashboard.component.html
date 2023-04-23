@@ -1,0 +1,81 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h3 class="text-center"></h3>
+        <form [formGroup]="searchForm" class="d-flex" role="search">
+          <input class="form-control me-2" type="search" formControlName="search" placeholder="Search Product">
+          <button class="btn btn-outline-success" (click)="searchProduct()">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-2">
+      <div>
+        <!-- Price Silder -->
+        <mat-accordion>
+          <mat-expansion-panel (opened)="pricePanelOpen = true" (closed)="pricePanelOpen = false"
+            [expanded]="pricePanelOpen">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Price Range
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-slider [(ngModel)]="priceP" min="0" max="5000" step="100" value="1.5" (change)="filterProduct()">
+            </mat-slider>
+            <div>{{priceP}}</div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+
+      <!--Brand Filter-->
+      <div>
+        <mat-accordion>
+          <mat-expansion-panel (opened)="brandPanelOpen = true" (closed)="brandPanelOpen = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Brand
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <section *ngFor="let brand of brands">
+
+              <mat-checkbox color="accent" [checked]="brand.selected" value={{brand.label}}
+                (change)="filterProductsByBrand(brand)">
+                {{brand.label}}
+              </mat-checkbox>
+            </section>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+    <!-- Prdocut Details -->
+    
+    <div class="col-md-10">
+      <div class="content">
+        <h1 *ngIf= (!products.length||0)>No user Found</h1>
+        <div fxLayout="row wrap" fxLayoutGap="16px grid">
+          <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let prodcut of products">
+            <mat-card class="example-card">
+              <mat-card-header>
+                <mat-card-title>Brand:{{prodcut?.brand}}</mat-card-title>
+              </mat-card-header>
+              <img mat-card-image src={{prodcut?.imageLink}} alt="Photo of a proudct">
+              <mat-card-content>
+                <p>
+                  code : {{prodcut.code}}
+                </p>
+              </mat-card-content>
+              <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="getdetails(prodcut.code)">View Details</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

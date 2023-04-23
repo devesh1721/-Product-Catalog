@@ -1,0 +1,30 @@
+<div class="container">
+    
+</div>
+<div class="container">
+    <div class="row product-details">
+    <div class="col-md-6">
+        <img class="product-image" src={{product?.imageLink}} alt="">
+    </div>
+    <div class="col-md-6">
+        <div class="details">
+            <h1>Brand : {{product?.brand}}</h1>
+            <h3>Product code : {{product?.code}}</h3>
+        </div>
+        <div>
+            <h5>Color : {{product?.color}}</h5>
+        </div>
+        <h6>Category : {{product?.category}}</h6>
+        <h6>Deatils : {{product?.detail}}</h6>
+        <h6>Price:{{product?.price}}$</h6>
+        <div class="quantity search-input">
+            <form class="form-inline my-2 my-lg-0" [formGroup]="pincode" (ngSubmit)="searchPincode()">
+                <span class="deliverable">{{deliverable?.deliverable}}</span>  
+                <input class="form-control " type="search" formControlName="pincode" placeholder="Enter Pincode"
+                    aria-label="Search">
+                <button class="btn btn-outline-success button-search" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

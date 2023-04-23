@@ -1,0 +1,48 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3 class="text-center">Login Here!!</h3>
+                <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+                    <span class="req-filed" *ngIf="username && username.touched && username.invalid">Email is required</span>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input type="email" formControlName="username" matInput placeholder="Enter Email">
+                    </mat-form-field>
+
+                    <span class="req-filed" *ngIf="password && password.touched && password.invalid">Password is required</span>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput formControlName="password" placeholder="Enter password">
+                    </mat-form-field>
+                    
+                    <div class="container">
+                        <button [disabled]="loginForm.invalid"   mat-raised-button color="primary">Login</button>
+                        <button type="reset" class="button" mat-raised-button color="primary">Reset</button>
+                    </div>
+                </form>
+                <a href="/signup">Don't have account? Click here to register</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
